@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs') %>
+
+
+<body>
+	<%- include('includes/admin-nav.ejs') %>
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+   <div id="pad"> </div>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/admin/add-product" method="POST">
+				<span class="contact100-form-title">
+					Add Product
+				</span>
+
+				<label class="label-input100" >Product Title</label>
+				<div class="wrap-input100 ">
+					<input id="title" class="input100" type="text" name="title" placeholder="product name">
+				
+				</div>
+
+				<label class="label-input100" for="imageUrl">Image URL</label>
+				<div class="wrap-input100 validate-input">
+					<input id="imageUrl" class="input100" type="text" name="imageUrl" >
+				
+				</div>
+          
+				<label class="label-input100" for="description">Description</label>
+				<div class="wrap-input100 validate-input">
+
+					 <textarea name="description" id="description" class="input100" placeholder="Please enter your comments..."></textarea>
+					
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit" >
+						Add Product
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<%- include('includes/admin-end.ejs') %>

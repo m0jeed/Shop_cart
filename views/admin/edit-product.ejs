@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+
+
+<body>
+	<%- include('../includes/admin-nav.ejs') %>
+
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+   <div id="pad"> </div>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="multipart/form-data">
+				<span class="contact100-form-title">
+					Edit Product
+				</span>
+
+				<label class="label-input100" >Product Title</label>
+				<div class="wrap-input100 ">
+					<input id="title" 
+					class="input100  <%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>"
+					type="text" 
+					name="title" 
+					value="<% if (editing || hasError) { %><%= product.title %><% } %>"
+					>
+				</div>
+
+				<label class="label-input100" for="imageUrl">Image URL</label>
+				<div class="wrap-input100 validate-input">
+					<input id="imageUrl" 
+					class="input100  <%= validationErrors.find(e => e.param === 'imageUrl') ? 'invalid' : '' %>" 
+					type="text" 
+					name="imageUrl" 
+					value="<% if (editing || hasError) { %><%= product.imageUrl %><% } %>"
+					>
+				
+				</div>
+				               
+				<label class="label-input100" for="description">Description</label>
+				<div class="wrap-input100 validate-input">
+
+					 <textarea name="description" 
+					 id="description" 
+					 class="input100  <%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>" 
+					 >
+					 <% if (editing || hasError) { %><%= product.description %><% } %>
+					</textarea>	
+				</div>
+
+				<% if (editing) { %>
+					<input type="hidden" value="<%= product._id %>" name="productId">
+				<% } %>
+				<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit" >
+						<% if (editing) { %>Update Product<% } else { %>Add Product<% } %>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<%- include('../includes/admin-end.ejs') %>
